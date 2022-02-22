@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Invoice</title>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+        <link rel="stylesheet" href="./styles.css">
+        <script src="https://kit.fontawesome.com/8919c8dcf5.js" crossorigin="anonymous"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.3.2/jspdf.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js" integrity="sha512-BNaRQnYJYiPSqHHDb58B0yaPfCu+Wgds8Gp/gU33kqBtgNS4tSPHuGibyoeqMV/TJlSKda6FXzoEyYGjTe+vXA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+        <script>
+            var item="1";
+        </script>
+    </head>
+    <body>
+        <form>
+            <div id="main" class="form">
+
+                <!-- Top Section -->
+                <div class="container">
+                    <div class="row">
+                        <div class="col-8">
+                            <div class="row">
+                                <span class="col-1 badge">
+                                    DUE
+                                </span>
+                                <h2 class="col-4">
+                                    Invoice
+                                    <span id="download"><i class="fa-solid fa-download fa-sm"></i></span>
+                                </h2>
+                            </div>
+                            <div class="thanks row col-11">
+                                Thank you for your purchase. Timely payment will be appreciated.
+                            </div>
+                        </div>
+                        <div class="col-4">
+                            <div class="logo">
+                                <span>YOUR LOGO HERE</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row mt-4 left-right">
+                        <div class="invoiceNo col-2">
+                            <label for="invoiceNo">Invoice No.</label>
+                            <div class="input-group ">
+                                <div class="input-group-prepend">
+                                    <div class="input-group-text">#</div>
+                                </div>
+                                <input type="text" class="form-control" id="invoiceNo" placeholder="Invoice">
+                            </div>
+                        </div>
+                        <div style="width: auto; display: flex;">
+                            <div class="language" style="padding-right: 1em;">
+                                <label for="language">Language</label>
+                                <div>
+                                    <select class="custom-select my-1 mr-sm-2" id="language">
+                                        <option value="English" selected>English (US)</option>
+                                    </select>
+                                </div>  
+                            </div> 
+                            <div class="currency">
+                                <label for="currency">Currency</label>
+                                <div>
+                                    <select class="custom-select my-1 mr-sm-2" id="currency" style="width: 300px;"  onchange="currChanged()">
+                                        <option value="USD">U.S. Dollar - USD</option>
+                                        <option value="INR" selected>Indian Rupee - INR</option>
+                                        <option value="GBP">British Pound - GBP</option>
+                                        <option value="AUD">Australian Dollar - AUD</option>
+                                    </select>
+                                </div>  
+                            </div>                         
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="line"></div>
+
+
+                <!-- Middle Section -->
+                <div class="container">
+                    <div class="left-right">
+                        <div class="left" style="width: 40%;">
+                            <div>
+                                <b>From</b>
+                                <address class="mt-1" style="font-size: small;">
+                                    Your Business, Inc.<br>
+                                    Your Address <br>
+                                    City & ZIP, Your Country <br>
+                                </address>
+                            </div>
+                            <div>
+                                <div class="form-group">
+                                    <label for="toAddress">To</label>
+                                    <textarea style="background-color: rgb(228, 227, 227);
+                                    width: 95%" class="form-control rounded-0" id="toAddress" rows="4"></textarea>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="right">
+                            <div class="date">
+                                <label for="date">Date</label>
+                                <input type="date" class="form-control" id="date">
+                            </div>
+                            <div class="invoiceDue">
+                                <label for="invoiceDue">Invoice Due</label>
+                                <div>
+                                    <select class="custom-select my-1 mr-sm-2" id="invoiceDue" style="width: 300px;">
+                                        <option value="5" selected>After 5 days</option>
+                                        <option value="10">After 10 days</option>
+                                        <option value="15">After 15 days</option>
+                                        <option value="20">After 20 days</option>
+                                        <option value="30">After 30 days</option>
+                                    </select>
+                                </div>  
+                            </div> 
+                            <div class="poNum">
+                                <label for="poNum">Purchase Order Number</label>
+                                <input type="text" class="form-control" id="poNum">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="line"></div>
+
+                <!-- Item Part -->
+                <div class="container" id="parent">
+                    <div class="row">
+                        <label class="col-6" for="itemName" style="text-align:left">Name</label>
+                        <span class="qra col-6">
+                            <label class="col-3" for="quantity">Quantity</label>
+                            <label class="col-3" for="rate" style="margin-left: auto; margin-right: auto;">Rate</label>
+                            <label class="col-5" for="amount">Amount</label>
+                        </span>
+                    </div>
+                    <div class="line1"></div>
+
+                    <div class="row" id="0" style="margin-bottom: 10px; display: none;">
+                        <div class="col-6">
+                            <div class="input-group">
+                                <textarea placeholder="Items You Are Selling" style="width: 95%;"  class="form-control rounded-0" rows="2"></textarea>
+                                <div class="input-group-append">
+                                    <i class="input-group-text fa-regular fa-copy" class="copy" onclick="cloneDiv(0)"></i>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-6 qra">
+                            <div class="col-3">
+                                <div class="input-group">
+                                    <input style="text-align: end;" min="0" step="1" type="number" class="form-control" id="quantity" placeholder="0" onchange="qrChange(0)">
+                                </div>
+                            </div>
+                            <div class="col-3" style="margin-left: auto; margin-right: auto;">
+                                <div class="input-group">
+                                    <input style="text-align: end;" min="0" type="number" class="form-control" id="rate" placeholder="0" onchange="qrChange(0)">
+                                </div>
+                            </div>
+                            <div class="col-5">
+                                <div>
+                                    <div id="amnt">
+                                        <span class="cur">
+                                            INR
+                                        </span>
+                                        <span class="amt">0</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <div class="row" id="1" style="margin-bottom: 10px;">
+                        <div class="col-6">
+                            <div class="input-group">
+                                <textarea placeholder="Items You Are Selling" style="width: 95%;"  class="form-control rounded-0" rows="2"></textarea>
+                                <div class="input-group-append">
+                                    <i class="input-group-text fa-regular fa-copy" class="copy" onclick="cloneDiv(1)"></i>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-6 qra">
+                            <div class="col-3">
+                                <div class="input-group">
+                                    <input style="text-align: end;" min="0" step="1" type="number" class="form-control" id="quantity" value="0" placeholder="0" onchange="qrChange(1)">
+                                </div>
+                            </div>
+                            <div class="col-3" style="margin-left: auto; margin-right: auto;">
+                                <div class="input-group">
+                                    <input style="text-align: end;" min="0" type="number" class="form-control" id="rate" value="0" placeholder="0" onchange="qrChange(1)">
+                                </div>
+                            </div>
+                            <div class="col-5">
+                                <div>
+                                    <div id="amnt">
+                                        <span class="cur">
+                                            INR
+                                        </span>
+                                        <span class="amt">
+                                            0
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="line"></div>
+                <div class="totalSection">
+                    <div class="col-6">
+                        <div class="btn btn-secondary btn-sm" onclick="addItem()">
+                            New Line
+                        </div>
+                    </div>
+                    <div class="col-6 container">
+                        <div class="sub">
+                            <span>Sub Total</span>
+                            <span id="subTotal">
+                                0
+                            </span>
+                        </div>
+
+                        <div class="line1" style="margin-top: 10px; margin-bottom: 10px;"></div>
+
+                        <div class="tax">
+                            <div class="vat col-7">
+                                <div class="input-group">
+                                    <div class="input-group-prepend">
+                                        <div class="input-group-text" style="background-color: white;">Value Added Tax</div>
+                                    </div>
+                                    <input type="number" min="0" max="100" class="form-control" id="vat" value="0" onchange="vatChanged()">
+                                </div>
+                            </div>
+                            <div id="taxVal">
+                                0
+                            </div>
+                        </div>
+
+                        <div class="line1" style="margin-top: 10px; margin-bottom: 10px;"></div>
+
+                        <div class="total">
+                            <label>Total (<span id="totCur">INR</span>)</label>
+                            <span id="grandTotal">
+                                0
+                            </span>
+                        </div>
+
+                        <div class="container col-12 totalDue">
+                            <div class="col-3 label">
+                                Total Due
+                            </div>
+                            <div class="col-9 val">
+                                <div id="finalCur">
+                                    INR
+                                </div>
+                                <div id="due">
+                                    0
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </form>
+    </body>
+    <script src="./scripts.js"></script>
+</html>
