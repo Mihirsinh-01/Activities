@@ -123,9 +123,9 @@ function totalChanged(){
 function conversionRate(){
     var cur=document.getElementById("currency").value;
     var due=parseFloat(document.getElementById("due").innerHTML);
-    console.log(due);
-    console.log(aud);
-    console.log(due*aud);
+    var usd=fromINR.usd;
+    var aud=fromINR.aud;
+    var gbp=fromINR.gbp;
     switch(cur){
         case "INR":
             $('#inr').text((due).toFixed(2));
