@@ -88,6 +88,72 @@ function currChanged(){
     $('#amnt>.cur').text(cur);
     $('#totCur').text(cur);
     $('#finalCur').text(cur);
+
+    for(var i=1;i<=item;i++){
+        var node=document.getElementById(i);
+        if(node!=null){
+            console.log("Inside Lop");
+            var a=document.getElementById(i.toString()).getElementsByTagName("input")[1].value;
+            switch(cur){
+                case "INR":
+                    if(prev=="GBP"){
+                        a=a/fromINR.gbp;
+                    }
+                    else if(prev=="AUD"){
+                        a=a/fromINR.aud;
+                    }
+                    else{
+                        a=a/fromINR.usd;
+                    }
+                    break;
+                
+                case "GBP":
+                    if(prev=="INR"){
+                        a=a*fromINR.gbp;
+                    }
+                    else if(prev=="AUD"){
+                        a=a/fromINR.aud;
+                        a=a*fromINR.gbp;
+                    }
+                    else{
+                        a=a/fromINR.usd;
+                        a=a*fromINR.gbp;
+                    }
+                    break;
+
+                case "AUD":
+                    if(prev=="INR"){
+                        a=a*fromINR.aud;
+                    }
+                    else if(prev=="GBP"){
+                        a=a/fromINR.gbp;
+                        a=a*fromINR.aud;
+                    }
+                    else{
+                        a=a/fromINR.usd;
+                        a=a*fromINR.aud;
+                    }
+                    break;
+
+                case "USD":
+                    if(prev=="INR"){
+                        a=a*fromINR.usd;
+                    }
+                    else if(prev=="AUD"){
+                        a=a/fromINR.aud;
+                        a=a*fromINR.usd;
+                    }
+                    else{
+                        a=a/fromINR.gbp;
+                        a=a*fromINR.usd;
+                    }
+                    break;
+            }
+            document.getElementById(i.toString()).getElementsByTagName("input")[1].value=a.toFixed(2);
+            qrChange(i);
+        }
+    }
+    prev=cur;
     conversionRate();
 }
 
@@ -96,7 +162,7 @@ function amtChanged(){
     var n=all.length;
     var total=0;
     for(var i=1;i<n;i++){
-        total+=parseInt(all[i].innerHTML);
+        total+=parseFloat(all[i].innerHTML);
     }
     $('#subTotal').text(total);
     vatChanged();   
@@ -157,6 +223,5 @@ function conversionRate(){
             $('#gbp').text((due*gbp).toFixed(2));
             $('#aud').text((due*aud).toFixed(2));
             break;
-
     }
 }
