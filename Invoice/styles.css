@@ -156,3 +156,10 @@ label{
     top: 3%;
     right: 10%;
 }
+
+.convert{
+    margin: auto;
+    margin-top: 10px;
+    width: 70%;
+    padding: 0px;
+}

@@ -34,8 +34,9 @@ $('#download').click(function(){
           
             pdf.setPage(i + 1); // now we declare that we're working on that page
             pdf.addImage(canvasDataURL, 'PNG', 20, 40, (width * .62), (height * .62)); // add content to the page
-          
           }
+          var invNo=document.getElementById('invoiceNo').value;
+          pdf.save(`${invNo}.pdf`);
         }
     });
 });
@@ -50,10 +51,18 @@ function cloneDiv(i) {
 
     var onC="cloneDiv("+item+")";
     var qrC='qrChange('+item+")";
+    var del="delDiv("+item+")";
     parent.appendChild(clone);
     document.getElementById(item).getElementsByTagName("i")[0].setAttribute('onclick',onC);
+    document.getElementById(item).getElementsByTagName("i")[1].setAttribute('onclick',del);
     document.getElementById(item).getElementsByTagName("input")[0].setAttribute('onchange',qrC);
     document.getElementById(item).getElementsByTagName("input")[1].setAttribute('onchange',qrC);
+    amtChanged();
+}
+
+function delDiv(i){
+    var id=i.toString();
+    $(`#${id}`).remove();
     amtChanged();
 }
 
@@ -76,10 +85,10 @@ function qrChange(i){
 
 function currChanged(){
     var cur=document.getElementById("currency").value;
-    console.log(cur);
     $('#amnt>.cur').text(cur);
     $('#totCur').text(cur);
     $('#finalCur').text(cur);
+    conversionRate();
 }
 
 function amtChanged(){
@@ -106,9 +115,48 @@ function totalChanged(){
     var tax=document.getElementById('taxVal').innerHTML;
     
     var gTotal=parseFloat(sub)+parseFloat(tax);
-    console.log(sub);
-    console.log(tax);
-    console.log(gTotal);
     $('#grandTotal').text(gTotal);
     $('#due').text(gTotal);
+    conversionRate();
+}
+
+function conversionRate(){
+    var cur=document.getElementById("currency").value;
+    var due=parseFloat(document.getElementById("due").innerHTML);
+    console.log(due);
+    console.log(aud);
+    console.log(due*aud);
+    switch(cur){
+        case "INR":
+            $('#inr').text((due).toFixed(2));
+            $('#usd').text((due*usd).toFixed(2));
+            $('#gbp').text((due*gbp).toFixed(2));
+            $('#aud').text((due*aud).toFixed(2));
+            break;
+        
+        case "AUD":
+            due=due/aud;
+            $('#inr').text((due).toFixed(2));
+            $('#usd').text((due*usd).toFixed(2));
+            $('#gbp').text((due*gbp).toFixed(2));
+            $('#aud').text((due*aud).toFixed(2));
+            break;
+
+        case "GBP":
+            due=due/gbp;
+            $('#inr').text((due).toFixed(2));
+            $('#usd').text((due*usd).toFixed(2));
+            $('#gbp').text((due*gbp).toFixed(2));
+            $('#aud').text((due*aud).toFixed(2));
+            break;
+
+        case "USD":
+            due=due/usd;
+            $('#inr').text((due).toFixed(2));
+            $('#usd').text((due*usd).toFixed(2));
+            $('#gbp').text((due*gbp).toFixed(2));
+            $('#aud').text((due*aud).toFixed(2));
+            break;
+
+    }
 }
