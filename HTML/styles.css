@@ -1,0 +1,125 @@
+html{
+    font-size: 100%;
+    min-width: 600px;
+}
+
+@media(max-width:998px){
+    html{
+        font-size: 80%;
+    }
+}
+@media(max-width:768px){
+    html{
+        font-size: 60%;
+        width: 400px;
+    }
+}
+
+
+body{
+    background-color: black;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+}
+
+.main{
+    background-color: white;
+    height:90%;
+    width: 90%;
+}
+
+.docTitle{
+    font-size: 2rem;
+    font-weight: bold;
+    margin: 1rem;
+}
+
+.colorLines{
+    display: flex;
+}
+
+.colorLines>.red{
+    width:2.1rem;
+    border-top:5px solid;
+    border-color: red;
+}
+.colorLines>.blue{
+    width:2.1rem;
+    border-top:5px solid;
+    border-color: blue;
+}
+.colorLines>.cyan{
+    width:2.1rem;
+    border-top:5px solid;
+    border-color: rgb(98, 209, 209);
+}
+.colorLines>.yellow{
+    width:2.1rem;
+    border-top:5px solid;
+    border-color: rgb(255, 196, 0);
+}
+
+.description{
+    margin: 1rem;
+}
+
+.flow{
+    display: flex;
+    width: 100%;
+    padding: 0.5rem;
+    margin-top: 2rem;
+}
+
+.block{
+    color: black;
+    height: 25rem;
+    border: 1px solid rgb(206, 203, 203);
+    border-radius: 2px;
+    background-color: rgb(235, 233, 233);
+    
+}
+
+.blockTitle{
+    font-weight: bold;
+    margin-left: 0.4rem;
+    margin-top: 0.2rem;
+    font-size: 1rem;
+}
+
+.content{
+    height: 100%;
+    display: flex;
+    align-items: center;
+    font-size: 0.7rem;
+    justify-content: center;
+}
+
+
+
+.subBlock{
+    background-color: white;
+    border: 1px solid rgb(219, 218, 218);
+    width: auto;
+    padding: 0.4rem;
+    margin: auto;
+    margin-bottom: 0.5rem;
+}
+
+.subBlockTitle{
+    font-weight: bold;
+}
+
+.left-3{
+    display: flex;
+    color: grey;
+    align-items: center;
+}
+
+.blockSubTitle{
+    margin-left: 0.4rem;
+    margin-top: 0.2rem;
+    font-size: 0.9rem;
+}
