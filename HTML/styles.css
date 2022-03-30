@@ -1,17 +1,29 @@
 html{
-    font-size: 100%;
-    min-width: 600px;
+    font-size: 62.5%;
+    min-width: 700px;
 }
 
-@media(max-width:998px){
+@media(max-width:1020px){
     html{
-        font-size: 80%;
+        font-size:55%;
     }
 }
-@media(max-width:768px){
+
+@media(max-width:1100px){
     html{
         font-size: 60%;
-        width: 400px;
+    }
+}
+
+@media(max-width:925px){
+    html{
+        font-size: 45%;
+    }
+}
+
+@media(max-width:768px){
+    html{
+        font-size: 40%;
     }
 }
 
@@ -27,12 +39,12 @@ body{
 
 .main{
     background-color: white;
-    height:90%;
-    width: 90%;
+    height:60rem;
+    width: 85%; 
 }
 
 .docTitle{
-    font-size: 2rem;
+    font-size: 3.3rem;
     font-weight: bold;
     margin: 1rem;
 }
@@ -42,74 +54,117 @@ body{
 }
 
 .colorLines>.red{
-    width:2.1rem;
+    width: 3.7rem;
     border-top:5px solid;
     border-color: red;
 }
 .colorLines>.blue{
-    width:2.1rem;
+    width:3.7rem;
     border-top:5px solid;
     border-color: blue;
 }
 .colorLines>.cyan{
-    width:2.1rem;
+    width:3.7rem;
     border-top:5px solid;
     border-color: rgb(98, 209, 209);
 }
 .colorLines>.yellow{
-    width:2.1rem;
+    width:3.7rem;
     border-top:5px solid;
     border-color: rgb(255, 196, 0);
 }
 
 .description{
-    margin: 1rem;
+    margin: 1.8rem;
+    font-size: 1.6rem;
 }
 
 .flow{
     display: flex;
     width: 100%;
-    padding: 0.5rem;
-    margin-top: 2rem;
+    justify-content: center;
+    margin-top: 3rem;
+    align-items: center;
 }
 
 .block{
     color: black;
-    height: 25rem;
+    height: 40rem;
     border: 1px solid rgb(206, 203, 203);
     border-radius: 2px;
-    background-color: rgb(235, 233, 233);
-    
+    background-color: rgb(247, 244, 244);
+    padding: 0px;
 }
-
+.block-1{
+    width: 8rem;
+}
+.block-2, .block-3{
+    width: 17.4rem;
+}
+.block-4{
+    width: 23rem;
+}
+.block-5{
+    width: 13.5rem;
+}
+.block-6{
+    width: 11rem;
+}
+.block-7{
+    width: 11rem;
+    margin-right: 0.5rem;
+}
 .blockTitle{
+    /* position: absolute; */
     font-weight: bold;
-    margin-left: 0.4rem;
-    margin-top: 0.2rem;
-    font-size: 1rem;
+    margin-left: 0.8rem;
+    margin-top: 0.6rem;
+    font-size: 1.5rem;
 }
 
 .content{
     height: 100%;
     display: flex;
-    align-items: center;
-    font-size: 0.7rem;
+    font-size: 0.8rem;
     justify-content: center;
 }
+.block-1>.content{
+    padding-top: 12rem;
+}
+.block-2>.content{
+    padding-top: 9rem;
+}
+.block-3>.content{
+    padding-top: 9rem;
+}
+.block-4>.content{
+    padding-top: 7rem;
+}
+.block-5>.content{
+    padding-top: 6rem;
+}
+.block-7>.content{
+    padding-top: 6rem;
+}
 
+
+.subBlocks{
+    width: 90%;
+}
 
 
 .subBlock{
     background-color: white;
     border: 1px solid rgb(219, 218, 218);
-    width: auto;
-    padding: 0.4rem;
+    width: 100%;
     margin: auto;
     margin-bottom: 0.5rem;
+    padding: 0.6rem;
 }
 
 .subBlockTitle{
     font-weight: bold;
+    font-size: 1.1rem;
 }
 
 .left-3{
@@ -119,7 +174,20 @@ body{
 }
 
 .blockSubTitle{
-    margin-left: 0.4rem;
+    margin-left: 0.8rem;
     margin-top: 0.2rem;
-    font-size: 0.9rem;
+    font-size: 1.3rem;
+}
+
+.items-2{
+    display: flex;
+    align-content: center;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.subBlock-1, .subBlock-2{
+    padding: 1rem;
+    width: 45%;
+    height: 13rem;
 }

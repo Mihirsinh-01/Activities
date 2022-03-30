@@ -9,12 +9,23 @@
         <link rel="stylesheet" href="./styles.css">
     </head>
     <body>
+
+
+        <!-- Image Divided Into
+            1) Document Title
+            2) Description
+            3) Blocks (with Title & Sub Title)
+            4) SubBlocks (multiple sub Block)
+            5) SubBlock (with Title & Content)
+         -->
         <div class="main">
 
 
-
+            <!-- Title and Title Description -->
             <div class="docTitle">
                 <p>What is Document AI?</p>
+
+                <!-- Colored Lines -->
                 <div class="colorLines">
                     <div class="blue"></div>
                     <div class="cyan"></div>
@@ -28,101 +39,236 @@
 
 
 
-            <div class="flow row">
-                <div class="col-5 left-3">
-                    <div class="col-2 block">
-                        <div class="blockTitle">
-                            Inputs
-                        </div>
-                        <div class="content">
-                            <div class="subBlocks">
-                                <div class="subBlock">
-                                    <div class="subBlockTitle">
-                                        Docs
-                                    </div>
-                                    <div class="subBlockContent">
-                                        <div>- PDF</div>
-                                        <div>- DocX</div>
-                                        <div>- HTML</div>
-                                        <div>- TXT</div>
-                                        <div>- JPG</div>
-                                        <div>- TIFF</div>
-                                    </div>
+            <div class="flow">
+
+                <!-- 1) Input Block -->
+                <div class="block block-1">
+                    <div class="blockTitle">
+                        Inputs
+                    </div>
+                    <div class="content">
+                        <div class="subBlocks">
+                            <div class="subBlock">
+                                <div class="subBlockTitle">
+                                    Docs
+                                </div>
+                                <div class="subBlockContent">
+                                    <div>- PDF</div>
+                                    <div>- DocX</div>
+                                    <div>- HTML</div>
+                                    <div>- TXT</div>
+                                    <div>- JPG</div>
+                                    <div>- TIFF</div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <i class="fa-solid fa-right-long"></i>
+                </div>
+                <i class="fa-2x fa-solid fa-right-long"></i>
 
 
-                    <div class="col-5 block">
-                        <div class="blockTitle">
-                            Doc Prep
-                        </div>
-                        <div class="blockSubTitle">
-                            Clean images & get text
-                        </div>
-                        <div class="content">
-                            <div class="subBlocks">
-                                <div class="subBlock">
-                                    <div class="subBlockTitle">
-                                        Preprocessing Tools
-                                    </div>
-                                    <div class="subBlockContent">
-                                        <div>Splitting</div>
-                                        <div>Quality Scoring</div>
-                                        <div>Alignment</div>
-                                    </div>
+                <!-- 2) Document Preparation Block -->
+                <div class="block block-2">
+                    <div class="blockTitle">
+                        Doc Prep
+                    </div>
+                    <div class="blockSubTitle">
+                        Clean images & get text
+                    </div>
+                    <div class="content">
+                        <div class="subBlocks">
+                            <div class="subBlock">
+                                <div class="subBlockTitle">
+                                    Preprocessing Tools
                                 </div>
-                                <div class="subBlock">
-                                    <div class="subBlockTitle">
-                                        Digitization
-                                    </div>
-                                    <div class="subBlockContent">
-                                        <div>Print OCR</div>
-                                        <div>Handwriting OCR</div>
-                                        <div>Language identification</div>
-                                        <div>Specialized Language Models</div>
-                                    </div>
+                                <div class="subBlockContent">
+                                    <div>Splitting</div>
+                                    <div>Quality Scoring</div>
+                                    <div>Alignment</div>
+                                </div>
+                            </div>
+                            <div class="subBlock">
+                                <div class="subBlockTitle">
+                                    Digitization
+                                </div>
+                                <div class="subBlockContent">
+                                    <div>Print OCR</div>
+                                    <div>Handwriting OCR</div>
+                                    <div>Language identification</div>
+                                    <div>Specialized Language Models</div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <i class="fa-solid fa-right-long"></i>
+                </div>
+                <i class="fa-2x fa-solid fa-right-long"></i>
 
 
-                    <div class="col-5 block">
-                        <div class="blockTitle">
-                            Classification
+                <!-- 3) Classification Block -->
+                <div class="block block-3">
+                    <div class="blockTitle">
+                        Classification
+                    </div>
+                    <div class="blockSubTitle">
+                        Indentify doc type
+                    </div>
+                    <div class="content">
+                        <div class="subBlocks">
+                            <div class="subBlock">
+                                <div class="subBlockTitle">
+                                    General Docs
+                                </div>
+                                <div class="subBlockContent">
+                                    <div>Unclassified</div>
+                                </div>
+                            </div>
+                            <div class="subBlock">
+                                <div class="subBlockTitle">
+                                    Specialized Docs
+                                </div>
+                                <div class="subBlockContent">
+                                    <div>Google's Pre-trained Docs</div>
+                                </div>
+                            </div>
+                            <div class="subBlock">
+                                <div class="subBlockTitle">
+                                    Custom Doc Classifier
+                                </div>
+                                <div class="subBlockContent">
+                                    <div>Train your own classifier</div>
+                                </div>
+                            </div>
                         </div>
-                        <div class="blockSubTitle">
-                            Indentify doc type
-                        </div>
-                        <div class="content">
-                            <div class="subBlocks">
-                                <div class="subBlock">
+                    </div>
+                </div>
+                <i class="fa-2x fa-solid fa-right-long"></i>
+
+                <!-- 4) Entity Extraction Block -->
+                <div class="block block-4">
+                    <div class="blockTitle">
+                        Entity Extraction
+                    </div>
+                    <div class="blockSubTitle">
+                        Get Simple & compound entities
+                    </div>
+                    <div class="content">
+                        <div class="subBlocks">
+                            <div class="subBlock">
+                                <div class="subBlockTitle">
+                                    Specialized Models
+                                </div>
+                                <div class="subBlockContent">
+                                    Schematization
+                                </div>
+                            </div>
+                            <div class="items-2">
+                                <div class="subBlock subBlock-1">
                                     <div class="subBlockTitle">
-                                        General Docs
+                                        Text Entities
                                     </div>
                                     <div class="subBlockContent">
-                                        <div>Unclassified</div>
+                                        <div>Strings</div>
+                                        <div>Numbers</div>
+                                        <div>Dates</div>
+                                        <div>Addresses</div>
+                                        <div>Phone #'s</div>
+                                        <div>Key-Value Pairs</div>
                                     </div>
                                 </div>
-                                <div class="subBlock">
+                                <div class="subBlock subBlock-2">
                                     <div class="subBlockTitle">
-                                        Specialized Docs
+                                        Spatial Entities
                                     </div>
                                     <div class="subBlockContent">
-                                        <div>Google's Pre-trained Docs</div>
+                                        <div>Tables</div>
+                                        <div>Signatures</div>
+                                        <div>Checkboxes</div>
+                                        <div>Bar Codes</div>
+                                        <div>Stamps</div>
                                     </div>
                                 </div>
-                                <div class="subBlock">
-                                    <div class="subBlockTitle">
-                                        Custom Doc Classifier
-                                    </div>
-                                    <div class="subBlockContent">
-                                        <div>Train your own classifier</div>
-                                    </div>
+                            </div>
+                            <div class="subBlock">
+                                <div class="subBlockTitle">
+                                    Customized Entity Extraction
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <i class="fa-2x fa-solid fa-right-long"></i>
+                
+
+                <!-- 5) Entity Relationships Block -->
+                <div class="block block-5">
+                    <div class="blockTitle">
+                        Entity Relationships
+                    </div>
+                    <div class="blockSubTitle">
+                        Identify & link entites
+                    </div>
+                    <div class="content">
+                        <div class="subBlocks">
+                            <div class="subBlock">
+                                <div class="subBlockTitle">
+                                    General E-R Model
+                                </div>
+                            </div>
+                            <div class="subBlock">
+                                <div class="subBlockTitle">
+                                    Vertical E-R Models
+                                </div>
+                                <div class="subBlockContent">
+                                    <div>- Medical</div>
+                                    <div>- Legal</div>
+                                    <div>- Banking...</div>
+                                </div>
+                            </div>
+                            <div class="subBlock">
+                                <div class="subBlockTitle">
+                                    AutoML E-R
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <i class="fa-2x fa-solid fa-right-long"></i>
+
+
+                <!-- 6) Uptraining -->
+                <div class="block block-6">
+                    <div class="blockTitle">
+                        Uptraining
+                    </div>
+                    <div class="blockSubTitle">
+                        Custom ML extensions to Google's pipeline
+                    </div>
+                </div>
+                <i class="fa-2x fa-solid fa-right-long"></i>
+
+                <!-- 7) Repository Block -->
+                <div class="block block-7">
+                    <div class="blockTitle">
+                        Repository
+                    </div>
+                    <div class="blockSubTitle">
+                        The System of Record for unstructured data
+                    </div>
+                    <div class="content">
+                        <div class="subBlocks">
+                            <div class="subBlock">
+                                <div class="subBlockTitle">
+                                    CMS
+                                </div>
+                            </div>
+                            <div class="subBlock">
+                                <div class="subBlockTitle">
+                                    BigQuery
+                                </div>
+                            </div>
+                            <div class="subBlock">
+                                <div class="subBlockTitle">
+                                    Knowledge Graph
                                 </div>
                             </div>
                         </div>
